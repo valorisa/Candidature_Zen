@@ -1,0 +1,42 @@
+# Environnements virtuels
+venv/
+.env
+.venv/
+
+# Fichiers sensibles
+config/secrets.json
+data/daily_counter.json
+
+# Logs et fichiers système
+*.log
+*.pid
+*.cache
+*.sqlite
+
+# Fichiers générés par l'IDE
+.idea/
+.vscode/
+__pycache__/
+*.pyc
+*.pyo
+*.pyd
+
+# Fichiers temporaires
+*.swp
+*.swo
+*~
+
+# Spécifique Alpine
+*.apk
+.apk/
+/docker/
+.dockerignore
+
+# Fichiers de tests unitaires
+/test-results/
+/coverage/
+
+# Fichiers de build
+dist/
+build/
+*.egg-info/
