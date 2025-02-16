@@ -1,19 +1,23 @@
 from selenium import webdriver
 from selenium.webdriver.chrome.options import Options
+from selenium.webdriver.chrome.service import Service  # <-- Ajout important
 from pyvirtualdisplay import Display
 import time
 
 options = Options()
-options.binary_location = "/usr/bin/chromium-browser"  # Chemin spécifique Alpine
+options.binary_location = "/usr/bin/chromium-browser"
 options.add_argument("--no-sandbox")
 options.add_argument("--disable-dev-shm-usage")
 options.add_argument("--headless=new")
 options.add_argument("--single-process")
 
+# Nouvelle syntaxe avec Service()
+service = Service(executable_path="/usr/bin/chromedriver")  # <-- Correction clé
+
 try:
     with Display(visible=0, size=(1920, 1080)):
         driver = webdriver.Chrome(
-            executable_path="/usr/bin/chromedriver",
+            service=service,  # <-- Utiliser 'service' au lieu de 'executable_path'
             options=options
         )
         print("👉 Test de connexion à LinkedIn...")
